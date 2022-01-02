@@ -40,5 +40,8 @@ Alternatively, you can install the current release of full [Xcode from the Mac A
 
 ### Day 1
 
+* A bit about R packages
+* A bit about R projects
+* Creating your first R package
 * 
 
