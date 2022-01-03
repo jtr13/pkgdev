@@ -1,11 +1,20 @@
 # Materials for package development workshop
 
+These materials are based on the [package development workshop modules](https://github.com/forwards/workshops/tree/master/package-dev-modules) developed by Emma Rand and Mine Çetinkaya-Rundel for [RForwards](https://forwards.github.io/about/).
+
 ## Pre-workshop setup
 
 ### Everyone
+
 Install the **devtools** package:
 
 `install.packages(devtools)`
+
+If you already have **devtools** please reinstall to be sure you have the latest version (2.4.3) as [the package has frequent updates](https://github.com/r-lib/devtools/blob/main/NEWS.md).
+
+(for Day 2) Install the **assertthat** package:
+
+`install.packages(assertthat)`
 
 ### Windows users
 
@@ -36,12 +45,26 @@ xcode-select --install
 
 Alternatively, you can install the current release of full [Xcode from the Mac App Store](https://itunes.apple.com/ca/app/xcode/id497799835?mt=12). This includes a very great deal that you do not need, but it offers the advantage of App Store convenience.
 
-## Agenda
+## Agenda (tentative)
 
 ### Day 1
+* Where do R package come from?
+* Why create R packages?
+* Packages vs. scripts
+* Creating initial package files
+* Adding functions to the package
+* Package states
+* `devtools::load_all()`: testing and modifying functions
+* `devtools::document()`: documenting your functions
 
-* A bit about R packages
-* A bit about R projects
-* Creating your first R package
-* 
+### Day 2
+* `devtools::check()`: checking a package
+* Naming your package
+* Licensing your package
+* Adding dependencies
+* Adding examples to documentation
+* Creating vignettes
+* Using git/GitHub
+* Where next?
+
 
