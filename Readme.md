@@ -1,5 +1,7 @@
 # Materials for package development workshop
 
+_(Slides and code files to be added.)_
+
 These materials are based on the [package development workshop modules](https://github.com/forwards/workshops/tree/master/package-dev-modules) developed by Emma Rand and Mine Çetinkaya-Rundel for [RForwards](https://forwards.github.io/about/).
 
 ## Pre-workshop setup
