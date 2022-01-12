@@ -8,6 +8,24 @@ output: github_document
 knitr::opts_chunk$set(fig.align='center', echo = TRUE, eval=FALSE)
 ```
 
+# Welcome
+
+Joyce Robbins [jtr13\@columbia.edu](mailto:jtr13@columbia.edu) Twitter: \@jtrnyc
+
+Thank you to Emily Dodwell and Erin Grand of RLadiesNYC for organizing.
+
+Thank you to Mine Çetinkaya-Rundel and Emma Rand of RForwards for developing package development workshop modules.
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/ty.jpg")
+```
+
+# Misha update
+
+```{r, fig.width=5}
+knitr::include_graphics("images/misha.jpeg")
+```
+
 # What are packages?
 
 -   Collections of code
@@ -29,8 +47,6 @@ knitr::opts_chunk$set(fig.align='center', echo = TRUE, eval=FALSE)
 ```{r}
 install.packages("assertthat")
 ```
-
-
 
 ```{r}
 install.packages("RLadiesnyc")
@@ -54,7 +70,7 @@ Many packages are available both on CRAN and GitHub:
 devtools::install_github("tidyverse/forcats")
 ```
 
--   from your hard drive:
+- from your hard drive:
 
 ```{r}
 devtools::install("~/ggformat")
@@ -76,15 +92,13 @@ list.files("~/ggformat")
 
 So you never have to use `getwd()` or `setwd()` again. You're always just in the right place.
 
-
 # Loading vs. installing
 
 Usually we use `library()` to load packages into memory. While developing a package we use `devtools::load_all()`.
 
-- It doesn't show up in the list of packages (or at least the version under development doesn't.)
+-   It doesn't show up in the list of packages (or at least the version under development doesn't.)
 
-- The functions are in memory and will disappear if we restart R.
-
+-   The functions are in memory and will disappear if we restart R.
 
 # Creating a package
 
@@ -105,14 +119,13 @@ See [Day1_lab.md](Day1_lab.md)
 
 Before we can use the package elsewhere we need to:
 
-- add function documentation by clicking "Code... Insert Roxygen Skeleton" (or at a minimum include `@export`)
+-   add function documentation by clicking "Code... Insert Roxygen Skeleton" (or at a minimum include `@export`)
 
-- edit DESCRIPTION
+-   edit DESCRIPTION
 
-- document with `devtools::document()`
+-   document with `devtools::document()`
 
-- install the package with `devtools::install()`
-
+-   install the package with `devtools::install()`
 
 # YOUR TURN
 
@@ -124,16 +137,27 @@ See [Day1_lab.md](Day1_lab.md)
 knitr::include_graphics("images/installation.png")
 ```
 
-Source: https://r-pkgs.org/package-structure-state.html#installed-package
+Source: <https://r-pkgs.org/package-structure-state.html#installed-package>
 
 Key points:
 
-* `devtools::install()`:  source --> installed
+-   `devtools::install()`: source --> installed
 
-* `install.packages()`: binary --> installed 
+-   `install.packages()`: binary --> installed
 
-* Developers submit *bundles* to CRAN, CRAN builds and distributes *binaries* 
+-   Developers submit *bundles* to CRAN, CRAN builds and distributes *binaries*
 
 # Closer look at package files
 
 DEMO
+
+# Adding git/GitHub
+
+```{r}
+usethis::usegit()
+usethis::usegithub()
+```
+
+To set default branch from master to main, execute the following in the terminal:
+
+`git config --global init.defaultBranch main`
