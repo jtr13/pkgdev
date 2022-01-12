@@ -1,0 +1,208 @@
+---
+title: "Package Development"
+author: "Joyce Robbins"
+output: pdf_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(fig.align='center', echo = TRUE)
+```
+
+# What are packages?
+
+-   Collections of code
+
+# Where are they stored?
+
+-   CRAN
+
+-   GitHub
+
+-   BioConductor
+
+-   Your hard drive
+
+# How to install
+
+-   from CRAN:
+
+```{r, eval=FALSE}
+install.packages("testthat")
+```
+
+Weird stuff
+
+```{r, eval=FALSE}
+install.packages("RLadiesnyc")
+```
+
+-   from GitHub:
+
+```{r, eval=FALSE}
+devtools::install_github("jtr13/ggformat")
+```
+
+```{r, eval=FALSE}
+devtools::install_github("jtr13/ggformat", force = TRUE)
+```
+
+Many packages are available both on CRAN and GitHub:
+
+"dev version"
+
+```{r, eval=FALSE}
+devtools::install_github("tidyverse/forcats", force = TRUE)
+```
+
+-   from your hard drive:
+
+```{r, eval=FALSE}
+devtools::install("~/ggformat")
+```
+
+Regardless of the method, the packages are *installed* -- see Packages -->
+
+# What is a "source" package?
+
+```{r}
+fs::dir_tree("~/ggformat")
+```
+
+```{r}
+list.files("~/ggformat")
+```
+
+# Why use projects?
+
+So you never have to use `getwd()` or `setwd()` again. You're always just in the right place.
+
+
+# Loading vs. installing
+
+Usually we use `library()` to load packages into memory. While developing a package we use `devtools::load_all()`.
+
+- It doesn't show up in the list of packages (or at least the version under development doesn't.)
+
+- The functions are in memory and will disappear if we restart R.
+
+
+# Creating a package
+
+We need some essential files: `DESCRIPTION` and a folder called `R` with `.R` files.
+
+The easier way to create the structure is with `create_package()`:
+
+```{r, eval=FALSE}
+library(devtools)
+create_package("~/covidtime")
+```
+
+# YOUR TURN
+
+1. Create the package structure
+
+```{r, eval=FALSE}
+library(devtools)
+create_package("~/covidtime")  # adjust as you wish, just don't create a package inside another project
+```
+
+
+2. Create the following function and save it as `day.R` in the R folder:
+
+```{r}
+whatdayisit <- function() {
+  format(Sys.Date(), "%A, %B %d, %Y")
+}
+```
+
+3. Run:
+
+```{r, eval=FALSE}
+devtools::load_all()
+```
+
+4. Test the function:
+
+```{r, eval=FALSE}
+whatdayisit()
+```
+
+5. Make some changes and repeat 3. and 4.
+
+
+# Using the package in another project / script
+
+Before we can use the package elsewhere we need to:
+
+- add function documentation by clicking "Code... Insert Roxygen Skeleton" (or at a minimum include `@export`)
+
+- edit DESCRIPTION
+
+- document with `devtools::document()`
+
+- install the package with `devtools::install()`
+
+```{r, eval=FALSE}
+devtools::install("~/when")
+```
+
+
+# YOUR TURN
+
+1. Edit `DESCRIPTION`
+
+It should look like this, with your name and email address. DON'T REMOVE WHAT LOOKS LIKE AN EXTRA COMMA.
+
+```
+Package: covidtime
+Title: Helps reduce pandemic induced temporal disintegration
+Version: 0.0.0.9000
+Authors@R: 
+    person("first", "last", , "first.last@example.com", role = c("aut", "cre"))
+Description: Tools for regaining temporal orientation.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+```
+
+2. Open `day.R`. Put the cursor inside the function and click "Code... Insert Roxygen Skeleton". Add to the documentation so it looks something like this:
+
+#' Returns the current date (wrapper for \code{Sys.Date()})
+#'
+#' @return character string with current day and date nicely formatted
+#'
+#' @export
+#'
+#' @examples
+#'
+#' whatdayisit()
+#'
+
+3. Run:
+
+```{r, eval=FALSE}
+devtools::document()
+```
+
+4. Run:
+
+```{r, eval=FALSE}
+devtools::install()
+```
+
+5. Close the project and try using your package!
+
+```{r}
+library(covidtime)
+whatdayisit()
+```
+
+
+
+```{r}
+knitr::include_graphics("images/installation.png")
+```
