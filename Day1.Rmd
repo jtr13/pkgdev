@@ -1,9 +1,9 @@
 ---
-title: "Package Development"
+title: "Package Development Day 1"
 author: "Joyce Robbins"
-output: pdf_document
-editor_options: 
-  chunk_output_type: inline
+output:
+  pdf_document: default
+  github_document: default
 ---
 
 ```{r setup, include=FALSE, cache=FALSE}
@@ -101,36 +101,7 @@ create_package("~/covidtime")
 
 # YOUR TURN
 
-1. Create the package structure
-
-```{r, eval=FALSE}
-library(devtools)
-create_package("~/covidtime")  # adjust as you wish, just don't create a package inside another project
-```
-
-
-2. Create the following function and save it as `day.R` in the R folder:
-
-```{r}
-whatdayisit <- function() {
-  format(Sys.Date(), "%A, %B %d, %Y")
-}
-```
-
-3. Run:
-
-```{r, eval=FALSE}
-devtools::load_all()
-```
-
-4. Test the function:
-
-```{r, eval=FALSE}
-whatdayisit()
-```
-
-5. Make some changes and repeat 3. and 4.
-
+See [Day1_lab.md](Day1_lab.md)
 
 # Using the package in another project / script
 
@@ -143,64 +114,11 @@ Before we can use the package elsewhere we need to:
 - document with `devtools::document()`
 
 - install the package with `devtools::install()`
-
-```{r, eval=FALSE}
-devtools::install("~/when")
-```
-
+n
 
 # YOUR TURN
 
-1. Edit `DESCRIPTION`
-
-It should look like this, with your name and email address. DON'T REMOVE WHAT LOOKS LIKE AN EXTRA COMMA.
-
-```
-Package: covidtime
-Title: Helps reduce pandemic induced temporal disintegration
-Version: 0.0.0.9000
-Authors@R: 
-    person("first", "last", , "first.last@example.com", role = c("aut", "cre"))
-Description: Tools for regaining temporal orientation.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
-```
-
-2. Open `day.R`. Put the cursor inside the function and click "Code... Insert Roxygen Skeleton". Add to the documentation so it looks something like this:
-
-#' Returns the current date (wrapper for \code{Sys.Date()})
-#'
-#' @return character string with current day and date nicely formatted
-#'
-#' @export
-#'
-#' @examples
-#'
-#' whatdayisit()
-#'
-
-3. Run:
-
-```{r, eval=FALSE}
-devtools::document()
-```
-
-4. Run:
-
-```{r, eval=FALSE}
-devtools::install()
-```
-
-5. Close the project and try using your package!
-
-```{r}
-library(covidtime)
-whatdayisit()
-```
-
+See [Day1_lab.md](Day1_lab.md)
 
 
 ```{r}
