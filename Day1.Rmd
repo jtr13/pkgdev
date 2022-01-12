@@ -1,11 +1,11 @@
 ---
 title: "Package Development Day 1"
 author: "Joyce Robbins"
-output: html_notebook
+output: github_document
 ---
 
 ```{r setup, include=FALSE, cache=FALSE}
-knitr::opts_chunk$set(fig.align='center', echo = TRUE)
+knitr::opts_chunk$set(fig.align='center', echo = TRUE, eval=FALSE)
 ```
 
 # What are packages?

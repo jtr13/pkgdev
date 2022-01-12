@@ -21,10 +21,8 @@ Joyce Robbins
 -   from CRAN:
 
 ``` r
-install.packages("testthat")
+install.packages("assertthat")
 ```
-
-Weird stuff
 
 ``` r
 install.packages("RLadiesnyc")
@@ -45,7 +43,7 @@ Many packages are available both on CRAN and GitHub:
 “dev version”
 
 ``` r
-devtools::install_github("tidyverse/forcats", force = TRUE)
+devtools::install_github("tidyverse/forcats")
 ```
 
 -   from your hard drive:
@@ -62,31 +60,9 @@ Regardless of the method, the packages are *installed* – see Packages –>
 fs::dir_tree("~/ggformat")
 ```
 
-    ## ~/ggformat
-    ## ├── DESCRIPTION
-    ## ├── LICENSE
-    ## ├── NAMESPACE
-    ## ├── R
-    ## │   └── ggformat.R
-    ## ├── Readme.Rmd
-    ## ├── Readme.md
-    ## ├── ggformat.Rproj
-    ## ├── ggplot2template.png
-    ## ├── inst
-    ## │   └── rstudio
-    ## │       └── addins.dcf
-    ## ├── man
-    ## │   └── FormatCode.Rd
-    ## └── orderwords.txt
-
 ``` r
 list.files("~/ggformat")
 ```
-
-    ##  [1] "DESCRIPTION"         "ggformat.Rproj"      "ggplot2template.png"
-    ##  [4] "inst"                "LICENSE"             "man"                
-    ##  [7] "NAMESPACE"           "orderwords.txt"      "R"                  
-    ## [10] "Readme.md"           "Readme.Rmd"
 
 # Why use projects?
 
@@ -130,14 +106,26 @@ Before we can use the package elsewhere we need to:
 
 -   document with `devtools::document()`
 
--   install the package with `devtools::install()` n
+-   install the package with `devtools::install()`
 
 # YOUR TURN
 
 See [Day1_lab.md](Day1_lab.md)
 
-``` r
-knitr::include_graphics("images/installation.png")
-```
+# Package states
 
-<img src="images/installation.png" style="display: block; margin: auto;" />
+Source:
+<https://r-pkgs.org/package-structure-state.html#installed-package>
+
+Key points:
+
+-   `devtools::install()`: source –> installed
+
+-   `install.packages()`: binary –> installed
+
+-   Developers submit *bundles* to CRAN, CRAN builds and distributes
+    *binaries*
+
+# Closer look at package files
+
+DEMO
