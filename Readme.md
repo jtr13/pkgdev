@@ -64,11 +64,13 @@ Alternatively, you can install the current release of full [Xcode from the Mac A
 * `devtools::load_all()`: testing and modifying functions
 
 LAB: [Create a package](Day1_lab.md)
+
 [pdf version](Day1_lab.pdf)
 * `devtools::document()`: documenting your functions
 * `devtools::install(): installing your package
 
 LAB: [Document and install](Day1_lab.md)
+
 [pdf version](Day1_lab.pdf)
 * Package states
 * Roxygen
