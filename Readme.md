@@ -49,7 +49,8 @@ Alternatively, you can install the current release of full [Xcode from the Mac A
 
 ## Agenda (tentative)
 
-### Day 1
+### Day 1 
+[Code file (in lieu of slides)](Day1.Rmd) [PDF version](Day1.pdf) [Markdown version](Day1.md)
 * Where do R package come from?
 * Why create R packages?
 * Packages vs. scripts
