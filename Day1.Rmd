@@ -1,9 +1,7 @@
 ---
 title: "Package Development Day 1"
 author: "Joyce Robbins"
-output:
-  pdf_document: default
-  github_document: default
+output: html_notebook
 ---
 
 ```{r setup, include=FALSE, cache=FALSE}
@@ -28,23 +26,23 @@ knitr::opts_chunk$set(fig.align='center', echo = TRUE)
 
 -   from CRAN:
 
-```{r, eval=FALSE}
-install.packages("testthat")
+```{r}
+install.packages("assertthat")
 ```
 
-Weird stuff
 
-```{r, eval=FALSE}
+
+```{r}
 install.packages("RLadiesnyc")
 ```
 
 -   from GitHub:
 
-```{r, eval=FALSE}
+```{r}
 devtools::install_github("jtr13/ggformat")
 ```
 
-```{r, eval=FALSE}
+```{r}
 devtools::install_github("jtr13/ggformat", force = TRUE)
 ```
 
@@ -52,13 +50,13 @@ Many packages are available both on CRAN and GitHub:
 
 "dev version"
 
-```{r, eval=FALSE}
-devtools::install_github("tidyverse/forcats", force = TRUE)
+```{r}
+devtools::install_github("tidyverse/forcats")
 ```
 
 -   from your hard drive:
 
-```{r, eval=FALSE}
+```{r}
 devtools::install("~/ggformat")
 ```
 
@@ -94,7 +92,7 @@ We need some essential files: `DESCRIPTION` and a folder called `R` with `.R` fi
 
 The easier way to create the structure is with `create_package()`:
 
-```{r, eval=FALSE}
+```{r}
 library(devtools)
 create_package("~/covidtime")
 ```
@@ -114,13 +112,28 @@ Before we can use the package elsewhere we need to:
 - document with `devtools::document()`
 
 - install the package with `devtools::install()`
-n
+
 
 # YOUR TURN
 
 See [Day1_lab.md](Day1_lab.md)
 
+# Package states
 
-```{r}
+```{r, echo=FALSE}
 knitr::include_graphics("images/installation.png")
 ```
+
+Source: https://r-pkgs.org/package-structure-state.html#installed-package
+
+Key points:
+
+* `devtools::install()`:  source --> installed
+
+* `install.packages()`: binary --> installed 
+
+* Developers submit *bundles* to CRAN, CRAN builds and distributes *binaries* 
+
+# Closer look at package files
+
+DEMO
