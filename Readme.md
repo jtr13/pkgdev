@@ -50,22 +50,33 @@ Alternatively, you can install the current release of full [Xcode from the Mac A
 ## Agenda (tentative)
 
 ### Day 1 
-[Code file (in lieu of slides)](Day1.Rmd) [PDF version](Day1.pdf) [Markdown version](Day1.md)
+[Code file (in lieu of slides)](https://raw.githubusercontent.com/jtr13/pkgdev/main/Day1.Rmd)
+
+[PDF version](Day1.pdf)
+
+[Markdown version](Day1.md)
+
 * Where do R package come from?
 * Why create R packages?
 * Packages vs. scripts
 * Creating initial package files
 * Adding functions to the package
-* Package states
 * `devtools::load_all()`: testing and modifying functions
+LAB: [Create a package](Day1_lab.md)
+[pdf version](Day1_lab.pdf)
 * `devtools::document()`: documenting your functions
+* `devtools::install(): installing your package
+LAB: [Document and install](Day1_lab.md)
+[pdf version](Day1_lab.pdf)
+* Package states
+* Roxygen
 
 ### Day 2
 * `devtools::check()`: checking a package
 * Naming your package
 * Licensing your package
 * Adding dependencies
-* Adding examples to documentation
+* Adding to documentation
 * Creating vignettes
 * Using git/GitHub
 * Where next?
