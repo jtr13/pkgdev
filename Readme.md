@@ -52,9 +52,9 @@ Alternatively, you can install the current release of full [Xcode from the Mac A
 ### Day 1 
 [Code file (in lieu of slides)](https://raw.githubusercontent.com/jtr13/pkgdev/main/Day1.Rmd)
 
-[PDF version](Day1.pdf)
-
 [Markdown version](Day1.md)
+
+[PDF version with code rendered](Day1_rendered.pdf)
 
 * Where do R package come from?
 * Why create R packages?
