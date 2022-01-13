@@ -21,7 +21,7 @@ Thank you to Mine Çetinkaya-Rundel and Emma Rand of RForwards for developing pa
 
 ```{r}
 library(devtools)
-create_package("newpackage")
+create_package("~/newpackage")
 load_all()
 document()
 install()
@@ -30,6 +30,15 @@ install()
 How do I add a documentation template (@param, @return, etc.?)
 
 ```{r}
+#' Title
+#'
+#' @param x 
+#' @param y 
+#'
+#' @return
+#' @export
+#'
+#' @examples
 add <- function(x, y) {
   x + y
 }
@@ -66,7 +75,24 @@ Example:
 # missing by column
 library(mi)
 data(CHAIN)
-sapply(CHAIN, function(x) sum(is.na(x)))
+#' Title
+#'
+#' @param data 
+#' @param proportion logical. ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+missing_by_column <- function(data, proportion = FALSE) {
+  if (proportion) {
+    sapply(data, function(x) sum(is.na(x)))/nrow(data)
+  }
+  else {
+    sapply(data, function(x) sum(is.na(x)))
+  }
+}
+missing_by_column(CHAIN, proportion = TRUE)
 ```
 
 More info: Functions chapter in R for Data Science
@@ -75,15 +101,18 @@ https://r4ds.had.co.nz/functions.html
 
 # Run-time testing
 
+assertthat
+
 ```{r}
 x <- 4
-if (x != 3) stop ("x must equal 3.")
-if (x != 3) warning ("x isn't equal to 3.")
-if (x != 3) message ("Just letting you know that x equals ", x)
+if (x != 3) {
+  stop("x must equal 3.")
+}
+if (x != 3) warning("x isn't equal to 3.")
+if (x != 3) {
+  message("Just letting you know that x equals ", x)
+}
 ```
-
-
-
 
 # Dependencies
 
@@ -97,7 +126,7 @@ Use "Imports" not "Suggests, Depends"
 
 What are we checking and why?
 
-"Using R CMD check, the R package, checker, one can test whether *source* R packages work correctly." 
+"Using R CMD check, the R package checker, one can test whether *source* R packages work correctly." 
 
 https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Checking-packages
 

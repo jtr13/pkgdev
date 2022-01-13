@@ -43,6 +43,17 @@ Add a line to `whatdayisit()` that indicates the number of days to the next mont
 
 Run `usethis::use_package("lubridate")`.
 
+```{r}
+whatdayisit <- function() {
+  paste0("Today is ",
+         format(Sys.Date(), "%A, %B %d, %Y"),
+         ". There are ", 
+         as.numeric(lubridate::rollforward(Sys.Date()) - Sys.Date()),
+         " days until next month.")
+         }
+```
+
+
 
 
 ## Checking
@@ -63,9 +74,30 @@ Create a `whenis(month)` function in **covidtime** that returns the number of da
 Time difference of 169 days
 ```
 
+```{r}
+whenis <- function(month) {
+  year <- lubridate::year(Sys.Date())
+  monthdate <- as.Date(paste0(year, "-", which(month.abb == month), "-01"))
+  if (monthdate < Sys.Date()) {
+    monthdate <- as.Date(paste0(year + 1, "-", which(month.abb == month), "-01"))
+  }
+  paste(month.name[which(month.abb == month)], "will arrive in", monthdate - Sys.Date(), "days.")
+}
+```
 
 
 ## Run-time testing
 
 Use `if( )... stop()` to stop execution if `month` isn't a three letter month abbreviation and provide useful information.
 
+```{r}
+whenis <- function(month) {
+  if (!(month %in% month.abb)) stop("The month must be entered as a three letter abbreviation: ", paste(month.abb, collapse = " "))
+  year <- lubridate::year(Sys.Date())
+  monthdate <- as.Date(paste0(year, "-", which(month.abb == month), "-01"))
+  if (monthdate < Sys.Date()) {
+    monthdate <- as.Date(paste0(year + 1, "-", which(month.abb == month), "-01"))
+  }
+  paste(month.name[which(month.abb == month)], "will arrive in", monthdate - Sys.Date(), "days.")
+}
+```

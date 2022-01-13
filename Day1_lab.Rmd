@@ -154,4 +154,3 @@ Now anyone can install your package with `devtools::install_github()`.
 To set default branch from master to main, execute the following in the terminal:
 
 `git config --global init.defaultBranch main`
-`git config --global init.defaultBranch main`

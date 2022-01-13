@@ -1,0 +1,92 @@
+Package Development Lab Day 2
+================
+Joyce Robbins
+
+# Create a package (only if you missed Day 1)
+
+OR: fork and clone: <https://github.com/jtr13/covidtime>
+
+1.  Create the package file structure by typing the following in the
+    Console. Choose the path carefully so that you don’t create a
+    package inside another project.
+
+``` r
+library(devtools)
+create_package("~/covidtime")  # you can change the path
+```
+
+Your RStudio session will now switch to the new `covidtime` package
+project.
+
+2.  Create a new R script, type in the following function, and save it
+    as `day.R` in the R folder:
+
+``` r
+whatdayisit <- function() {
+  format(Sys.Date(), "%A, %B %d, %Y")
+}
+```
+
+# New Stuff
+
+## Dependencies
+
+Add a line to `whatdayisit()` that indicates the number of days to the
+next month using `lubridate::rollforward()`.
+
+Run `usethis::use_package("lubridate")`.
+
+``` r
+whatdayisit <- function() {
+  paste0("Today is ",
+         format(Sys.Date(), "%A, %B %d, %Y"),
+         ". There are ", 
+         as.numeric(lubridate::rollforward(Sys.Date()) - Sys.Date()),
+         " days until next month.")
+         }
+```
+
+## Checking
+
+Run `devtools::check()` or click “Check” in the build pane.
+
+## Add a license
+
+Run `usethis::use_mit_license("Your name")`
+
+## Functions
+
+Create a `whenis(month)` function in **covidtime** that returns the
+number of days until the month indicated. `month` should be entered as a
+three letter abbreviation.
+
+    > whenis("Jul")
+    Time difference of 169 days
+
+``` r
+whenis <- function(month) {
+  year <- lubridate::year(Sys.Date())
+  monthdate <- as.Date(paste0(year, "-", which(month.abb == month), "-01"))
+  if (monthdate < Sys.Date()) {
+    monthdate <- as.Date(paste0(year + 1, "-", which(month.abb == month), "-01"))
+  }
+  paste(month.name[which(month.abb == month)], "will arrive in", monthdate - Sys.Date(), "days.")
+}
+```
+
+## Run-time testing
+
+Use `if( )... stop()` to stop execution if `month` isn’t a three letter
+month abbreviation and provide useful information.
+
+``` r
+whenis <- function(month) {
+  if (!(month %in% month.abb)) stop("The month must be entered as a three letter abbreviation: ", paste(month.abb, collapse = " "))
+  year <- lubridate::year(Sys.Date())
+  monthdate <- as.Date(paste0(year, "-", which(month.abb == month), "-01"))
+  if (monthdate < Sys.Date()) {
+    monthdate <- as.Date(paste0(year + 1, "-", which(month.abb == month), "-01"))
+  }
+  paste(month.name[which(month.abb == month)], "will arrive in", monthdate - Sys.Date(), "days.")
+}
+```
