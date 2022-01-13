@@ -1,5 +1,5 @@
 ---
-title: "Package Development Day 1"
+title: "Package Development Day 2"
 author: "Joyce Robbins"
 output: github_document
 ---
