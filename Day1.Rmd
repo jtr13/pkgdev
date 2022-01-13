@@ -49,7 +49,7 @@ install.packages("assertthat")
 ```
 
 ```{r}
-install.packages("RLadiesnyc")
+install.packages("RLadivmhgfkjhgljkhklhgjesnyc")
 ```
 
 -   from GitHub:

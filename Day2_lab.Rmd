@@ -1,0 +1,36 @@
+---
+title: "Package Development Lab Day 2"
+author: "Joyce Robbins"
+output:
+  pdf_document:
+    default  
+  github_document:
+    default
+---
+
+```{r setup, include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
+```
+
+
+# Create a package (only if you missed Day 1)
+
+1. Create the package file structure by typing the following in the Console. Choose the path carefully so that you don't create a package inside another project. 
+
+```{r}
+library(devtools)
+create_package("~/covidtime")  # you can change the path
+```
+
+Your RStudio session will now switch to the new `covidtime` package project.
+
+
+2. Create a new R script, type in the following function, and save it as `day.R` in the R folder:
+
+```{r}
+whatdayisit <- function() {
+  format(Sys.Date(), "%A, %B %d, %Y")
+}
+```
+
+# 

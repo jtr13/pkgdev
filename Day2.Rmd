@@ -1,0 +1,203 @@
+---
+title: "Package Development Day 1"
+author: "Joyce Robbins"
+output: github_document
+---
+
+```{r setup, include=FALSE, cache=FALSE}
+knitr::opts_chunk$set(fig.align='center', echo = TRUE, eval=FALSE)
+```
+
+# Welcome
+
+Joyce Robbins jtr13@columbia.edu Twitter: \@jtrnyc
+
+Thank you to Emily Dodwell and Erin Grand of RLadiesNYC for organizing.
+
+Thank you to Mine Çetinkaya-Rundel and Emma Rand of RForwards for developing package development workshop modules.
+
+# Review
+
+
+```{r}
+library(devtools)
+create_package("newpackage")
+load_all()
+document()
+install()
+```
+
+How do I add a documentation template (@param, @return, etc.?)
+
+```{r}
+add <- function(x, y) {
+  x + y
+}
+```
+
+# Package states
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/installation.png")
+```
+
+Source: <https://r-pkgs.org/package-structure-state.html#installed-package>
+
+Key points:
+
+-   `devtools::install()`: source --> installed
+
+-   `install.packages()`: binary --> installed
+
+-   Developers submit *bundles* to CRAN, CRAN builds and distributes *binaries*
+
+
+# Functions 
+
+* Scripts vs. functions
+
+* Parameter defaults
+
+* Return
+
+Example: 
+
+```{r}
+# missing by column
+library(mi)
+data(CHAIN)
+sapply(CHAIN, function(x) sum(is.na(x)))
+```
+
+More info: Functions chapter in R for Data Science
+
+https://r4ds.had.co.nz/functions.html
+
+# Run-time testing
+
+```{r}
+x <- 4
+if (x != 3) stop ("x must equal 3.")
+if (x != 3) warning ("x isn't equal to 3.")
+if (x != 3) message ("Just letting you know that x equals ", x)
+```
+
+
+
+
+# Dependencies
+
+```{r}
+usethis::use_package("dplyr")
+```
+
+Use "Imports" not "Suggests, Depends"
+
+# Checking package
+
+What are we checking and why?
+
+"Using R CMD check, the R package, checker, one can test whether *source* R packages work correctly." 
+
+https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Checking-packages
+
+"R CMD check automatically checks your code for common problems. It’s essential if you’re planning on submitting to CRAN, but it’s useful even if you’re not because it automatically detects many common problems that you’d otherwise discover the hard way."
+
+https://r-pkgs.org/r-cmd-check.html
+
+
+# Your options
+
+How often should you check and what should you fix (errors, warnings, notes, and/or nothing)?
+
+
+Julia Silge, "How I Learned to Stop Worrying and Love R CMD Check"
+
+https://juliasilge.com/blog/how-i-stopped/
+
+
+```{r}
+devtools::check()
+```
+
+
+# License
+
+```{r}
+usethis::use_mit_license("Joyce Robbins")
+```
+
+https://choosealicense.com/
+
+
+```{r}
+devtools::check()
+```
+
+
+# Package names
+
+* Unique name you can easily Google
+
+* Avoid mixing upper and lower case (`GGally`)
+
+* Use abbreviations
+
+* Add an r to make unique, e.g `stringr`
+
+* Use wordplay, e.g. `r2d3`, `forcats`, `officer`
+
+* Avoid trademarked names
+
+* Use the **available** package to check name not taken
+
+```{r}
+available::available_on_cran("covidtime")
+available::available_on_github("covidtime")
+```
+
+
+# Vignettes
+
+Read vignettes!
+
+```{r}
+usethis::use_vignette("first_package", title = "Creating your first package")
+```
+
+
+# Package web site
+
+```{r}
+usethis::use_readme_rmd()
+usethis::use_pkgdown()
+devtools::build_site()
+```
+
+
+# Extras
+
+```{r}
+usethis::edit_r_profile()
+```
+
+```{r, eval=FALSE}
+options(
+  usethis.full_name = "Joyce Robbins",
+  usethis.description = list(
+    `Authors@R` = 'person("Joyce", "Robbins",
+                   email = "joycerobbins1@gmail.com",
+                   role = c("aut", "cre"))'
+    License = "MIT + file LICENSE",
+    Version = "0.0.0.9000"
+  )
+)
+```
+
+# References
+
+R Packages
+
+Writing R Extensions
+
+

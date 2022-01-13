@@ -2,6 +2,21 @@ Package Development Day 1
 ================
 Joyce Robbins
 
+# Welcome
+
+Joyce Robbins <jtr13@columbia.edu> Twitter: @jtrnyc
+
+Thank you to Emily Dodwell and Erin Grand of RLadiesNYC for organizing.
+
+Thank you to Mine Çetinkaya-Rundel and Emma Rand of RForwards for
+developing package development workshop modules.
+
+# Misha update
+
+``` r
+knitr::include_graphics("images/misha.jpeg")
+```
+
 # What are packages?
 
 -   Collections of code
@@ -129,3 +144,15 @@ Key points:
 # Closer look at package files
 
 DEMO
+
+# Adding git/GitHub
+
+``` r
+usethis::usegit()
+usethis::usegithub()
+```
+
+To set default branch from master to main, execute the following in the
+terminal:
+
+`git config --global init.defaultBranch main`
